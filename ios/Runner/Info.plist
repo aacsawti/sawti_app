@@ -50,5 +50,42 @@
         <string>en</string>
         <string>ar</string>
     </array>
+
+    <!-- Privacy / Permissions -->
+    <key>NSMicrophoneUsageDescription</key>
+    <string>هذا التطبيق يحتاج الوصول إلى الميكروفون لتسجيل الصوت وتشغيل المحادثات.</string>
+
+    <key>NSCameraUsageDescription</key>
+    <string>هذا التطبيق يحتاج الوصول إلى الكاميرا لالتقاط الصور أو الفيديو.</string>
+
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>هذا التطبيق يحتاج الوصول إلى مكتبة الصور لاختيار الصور أو الفيديو.</string>
+
+    <key>NSPhotoLibraryAddUsageDescription</key>
+    <string>هذا التطبيق يحتاج الإذن لإضافة صور أو فيديو إلى مكتبتك.</string>
+
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>هذا التطبيق يحتاج موقعك أثناء الاستخدام لتقديم خدمات تعتمد على موقعك.</string>
+
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>هذا التطبيق يحتاج موقعك حتى عند عدم استخدامه لتفعيل بعض الميزات.</string>
+
+    <key>NSBluetoothAlwaysUsageDescription</key>
+    <string>هذا التطبيق يحتاج البلوتوث للاتصال بالأجهزة القريبة.</string>
+
+    <key>NSContactsUsageDescription</key>
+    <string>هذا التطبيق يحتاج الوصول إلى جهات الاتصال لتسهيل التواصل.</string>
+
+    <key>NSCalendarsUsageDescription</key>
+    <string>هذا التطبيق يحتاج الوصول إلى التقويم لإضافة أو عرض الأحداث.</string>
+
+    <key>NSRemindersUsageDescription</key>
+    <string>هذا التطبيق يحتاج الوصول إلى التذكيرات لتنظيم مهامك.</string>
+
+    <key>NSSiriUsageDescription</key>
+    <string>هذا التطبيق يحتاج الوصول إلى Siri لتشغيل الأوامر الصوتية.</string>
+
+    <key>NSDocumentsFolderUsageDescription</key>
+    <string>هذا التطبيق يحتاج الوصول إلى ملفاتك لتخزين وفتح المستندات.</string>
 </dict>
 </plist>
