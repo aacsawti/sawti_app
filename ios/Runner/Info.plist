@@ -85,7 +85,15 @@
     <key>NSSiriUsageDescription</key>
     <string>هذا التطبيق يحتاج الوصول إلى Siri لتشغيل الأوامر الصوتية.</string>
 
+
+
+
     <key>NSDocumentsFolderUsageDescription</key>
     <string>هذا التطبيق يحتاج الوصول إلى ملفاتك لتخزين وفتح المستندات.</string>
+
+    <key>ITSAppUsesNonExemptEncryption</key>
+<false/>
+
 </dict>
 </plist>
+
