@@ -191,13 +191,7 @@ class _SetupScreenState extends State<SetupScreen> {
           children: [
             _buildRadioTile('الفصحى', 'MSA', Icons.language, Colors.blue),
             const Divider(height: 1),
-            _buildRadioTile(
-              'اللهجة المصرية',
-              'Egyptian',
-              Icons.language,
-              Colors.green,
-            ),
-            const Divider(height: 1),
+
             _buildRadioTile(
               'اللهجة الإماراتية',
               'Emirati',
@@ -289,17 +283,46 @@ class _SetupScreenState extends State<SetupScreen> {
       final dbHelper = DatabaseHelper();
       final appState = Provider.of<AppState>(context, listen: false);
 
-      await dbHelper.insertUser(_nameController.text);
+      try {
+        // إدخال المستخدم أولاً
+        final userId = await dbHelper.insertUser(_nameController.text);
 
-      // استخدام الدالة الجديدة لتغيير اللهجة فوراً
-      await appState.changeDialectImmediately(_selectedDialect);
+        if (userId > 0) {
+          // استخدام الدالة الجديدة لتغيير اللهجة فوراً
+          await appState.changeDialectImmediately(_selectedDialect);
 
-      // تحديث مستوى المستخدم أيضاً
-      await appState.updateSettings({'user_level': _selectedLevel});
+          // تحديث مستوى المستخدم أيضاً
+          await appState.updateSettings({'user_level': _selectedLevel});
 
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => const MainScaffold()),
-      );
+          // تحميل بيانات المستخدم الجديدة فوراً
+          await appState.loadUserAndSettings();
+
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('تم حفظ البيانات بنجاح'),
+              duration: Duration(seconds: 2),
+            ),
+          );
+
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (context) => const MainScaffold()),
+          );
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('فشل في حفظ البيانات'),
+              duration: Duration(seconds: 2),
+            ),
+          );
+        }
+      } catch (e) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('حدث خطأ: ${e.toString()}'),
+            duration: const Duration(seconds: 2),
+          ),
+        );
+      }
     }
   }
 
@@ -3174,8 +3197,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
             _buildSpeakerSelection(),
             const SizedBox(height: 20),
             _buildGridSizeSetting(),
-            const SizedBox(height: 20),
-            _buildTenseSetting(),
+            // const SizedBox(height: 20),
+            // _buildTenseSetting(),
           ],
         ),
       ),
@@ -3241,11 +3264,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       'الفصحى',
                       appState.currentDialect,
                     ),
-                    _buildDialectOption(
-                      'Egyptian',
-                      'مصرية',
-                      appState.currentDialect,
-                    ),
+                    // _buildDialectOption(
+                    //   'Egyptian',
+                    //   'مصرية',
+                    //   appState.currentDialect,
+                    // ),
                     _buildDialectOption(
                       'Emirati',
                       'خليجية',
