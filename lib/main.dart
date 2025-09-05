@@ -10,20 +10,29 @@ import 'dart:math';
 
 import 'dart:ui' as ui;
 
+import 'dart:io';
+import 'package:flutter/foundation.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.landscapeLeft,
-    DeviceOrientation.landscapeRight,
-  ]);
 
-  // إخفاء شريط الحالة عند الإقلاع
-  await _hideSystemUI();
+  // تحديد الاتجاهات بناءً على النظام الأساسي
+  if (Platform.isAndroid || Platform.isIOS) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
+    ]);
+  }
 
-  // بدء فحص دوري لإخفاء الشريط كل 5 ثوانٍ
-  Timer.periodic(const Duration(seconds: 7), (timer) async {
+  // إخفاء شريط الحالة عند الإقلاع (لـ Android وiOS فقط)
+  if (Platform.isAndroid || Platform.isIOS) {
     await _hideSystemUI();
-  });
+
+    // بدء فحص دوري لإخفاء الشريط كل 5 ثوانٍ
+    Timer.periodic(const Duration(seconds: 7), (timer) async {
+      await _hideSystemUI();
+    });
+  }
 
   final dbHelper = DatabaseHelper();
   final users = await dbHelper.getUsers();
@@ -43,10 +52,12 @@ void main() async {
   );
 }
 
-// دالة لإخفاء شريط الحالة وشريط التنقل
+// دالة لإخفاء شريط الحالة وشريط التنقل (لـ Android وiOS فقط)
 Future<void> _hideSystemUI() async {
   try {
-    await SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+    if (Platform.isAndroid || Platform.isIOS) {
+      await SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+    }
   } catch (e) {
     debugPrint('فشل إخفاء شريط النظام: $e');
   }
