@@ -22,8 +22,8 @@ def flutter_root
   end
   raise "FLUTTER_ROOT not found in #{generated_xcode_build_settings_path}. Please check FLUTTER_ROOT is set correctly"
 end
-
-require File.expand_path(File.join('..', 'Flutter', 'Flutter.podspec'), __FILE__)
+flutter_application_path = File.expand_path('..', __dir__)
+load File.join(flutter_application_path, '.ios', 'Flutter', 'podhelper.rb')
 
 target 'Runner' do
   use_frameworks!
