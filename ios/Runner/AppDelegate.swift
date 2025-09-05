@@ -13,8 +13,8 @@ import Flutter
       UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
     }
     
-    // تهيئة المشتقات الأخرى أولاً
-    self.window.makeKeyAndVisible()
+    // تهيئة النافذة وإظهارها
+    self.window?.makeKeyAndVisible()
     
     // تسجيل الـ plugins بشكل آمن
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
