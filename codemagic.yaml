@@ -1,0 +1,23 @@
+workflows:
+  ios-workflow:
+    name: Build iOS app
+    max_build_duration: 60
+    environment:
+      flutter: stable
+      xcode: latest
+    scripts:
+      - name: Clean and get packages
+        script: |
+          flutter clean
+          flutter pub get
+      - name: Build iOS
+        script: |
+          flutter build ipa --release \
+            --export-options-plist=/Users/builder/export_options.plist
+    artifacts:
+      - build/ios/ipa/*.ipa
+    publishing:
+      app_store_connect:
+        apple_id: YOUR_APPLE_ID
+        api_key: YOUR_API_KEY
+        api_issuer: YOUR_API_ISSUER_ID
