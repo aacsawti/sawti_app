@@ -1,86 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" 
-"http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CFBundleDevelopmentRegion</key>
-	<string>$(DEVELOPMENT_LANGUAGE)</string>
-	<key>CFBundleExecutable</key>
-	<string>$(EXECUTABLE_NAME)</string>
-	<key>CFBundleIdentifier</key>
-	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
-	<key>CFBundleInfoDictionaryVersion</key>
-	<string>6.0</string>
-	<key>CFBundleName</key>
-	<string>Runner</string>
-	<key>CFBundlePackageType</key>
-	<string>APPL</string>
-	<key>CFBundleShortVersionString</key>
-	<string>1.0.0</string>
-	<key>CFBundleVersion</key>
-	<string>1</string>
-	<key>LSRequiresIPhoneOS</key>
-	<true/>
+    <key>CFBundleDevelopmentRegion</key>
+    <string>$(DEVELOPMENT_LANGUAGE)</string>
+    <key>CFBundleDisplayName</key>
+    <string>$(PRODUCT_NAME)</string>
+    <key>CFBundleExecutable</key>
+    <string>$(EXECUTABLE_NAME)</string>
+    <key>CFBundleIdentifier</key>
+    <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+    <key>CFBundleInfoDictionaryVersion</key>
+    <string>6.0</string>
+    <key>CFBundleName</key>
+    <string>$(PRODUCT_NAME)</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>CFBundleShortVersionString</key>
+    <string>$(FLUTTER_BUILD_NAME)</string>
+    <key>CFBundleSignature</key>
+    <string>????</string>
+    <key>CFBundleVersion</key>
+    <string>$(FLUTTER_BUILD_NUMBER)</string>
+    <key>LSRequiresIPhoneOS</key>
+    <true/>
+    <key>UILaunchStoryboardName</key>
+    <string>LaunchScreen</string>
+    <key>UIMainStoryboardFile</key>
+    <string>Main</string>
+    <key>UISupportedInterfaceOrientations</key>
+    <array>
+        <string>UIInterfaceOrientationPortrait</string>
+        <string>UIInterfaceOrientationLandscapeLeft</string>
+        <string>UIInterfaceOrientationLandscapeRight</string>
+    </array>
+    <key>UISupportedInterfaceOrientations~ipad</key>
+    <array>
+        <string>UIInterfaceOrientationPortrait</string>
+        <string>UIInterfaceOrientationPortraitUpsideDown</string>
+        <string>UIInterfaceOrientationLandscapeLeft</string>
+        <string>UIInterfaceOrientationLandscapeRight</string>
+    </array>
+    <key>CADisableMinimumFrameDurationOnPhone</key>
+    <true/>
+    <key>UIApplicationSupportsIndirectInputEvents</key>
+    <true/>
+    <key>CFBundleLocalizations</key>
+    <array>
+        <string>en</string>
+        <string>ar</string>
+    </array>
 
-	<!-- Required permissions -->
-	<key>NSCameraUsageDescription</key>
-	<string>هذا التطبيق يحتاج الوصول إلى الكاميرا لالتقاط الصور والفيديو.</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>هذا التطبيق يحتاج الوصول إلى الميكروفون لتسجيل وتشغيل الصوت.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>هذا التطبيق يحتاج الوصول إلى مكتبة الصور لاختيار أو إضافة صور.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>هذا التطبيق يحتاج الوصول إلى موقعك لتقديم خدمات تعتمد على الموقع.</string>
+    <!-- Privacy / Permissions -->
+    <key>NSMicrophoneUsageDescription</key>
+    <string>هذا التطبيق يحتاج الوصول إلى الميكروفون لتسجيل الصوت وتشغيل المحادثات.</string>
 
-	<!-- iOS 17+ privacy API requirements -->
-	<key>NSPrivacyAccessedAPITypes</key>
-	<array>
-		<dict>
-			<key>NSPrivacyAccessedAPIType</key>
-			<string>Camera</string>
-			<key>NSPrivacyAccessedAPIUsageDescription</key>
-			<string>هذا التطبيق يحتاج الوصول إلى الكاميرا لالتقاط الصور والفيديو.</string>
-		</dict>
-		<dict>
-			<key>NSPrivacyAccessedAPIType</key>
-			<string>Microphone</string>
-			<key>NSPrivacyAccessedAPIUsageDescription</key>
-			<string>هذا التطبيق يحتاج الوصول إلى الميكروفون لتسجيل وتشغيل الصوت.</string>
-		</dict>
-		<dict>
-			<key>NSPrivacyAccessedAPIType</key>
-			<string>PhotoLibrary</string>
-			<key>NSPrivacyAccessedAPIUsageDescription</key>
-			<string>هذا التطبيق يحتاج الوصول إلى مكتبة الصور لاختيار أو إضافة صور.</string>
-		</dict>
-		<dict>
-			<key>NSPrivacyAccessedAPIType</key>
-			<string>Location</string>
-			<key>NSPrivacyAccessedAPIUsageDescription</key>
-			<string>هذا التطبيق يحتاج الوصول إلى موقعك لتقديم خدمات تعتمد على الموقع.</string>
-		</dict>
-	</array>
+    <key>NSCameraUsageDescription</key>
+    <string>هذا التطبيق يحتاج الوصول إلى الكاميرا لالتقاط الصور أو الفيديو.</string>
 
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
-	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
-	<key>UIRequiredDeviceCapabilities</key>
-	<array>
-		<string>armv7</string>
-	</array>
-	<key>UISupportedInterfaceOrientations</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>UISupportedInterfaceOrientations~ipad</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>هذا التطبيق يحتاج الوصول إلى مكتبة الصور لاختيار الصور أو الفيديو.</string>
+
+    <key>NSPhotoLibraryAddUsageDescription</key>
+    <string>هذا التطبيق يحتاج الإذن لإضافة صور أو فيديو إلى مكتبتك.</string>
+
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>هذا التطبيق يحتاج موقعك أثناء الاستخدام لتقديم خدمات تعتمد على موقعك.</string>
+
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>هذا التطبيق يحتاج موقعك حتى عند عدم استخدامه لتفعيل بعض الميزات.</string>
+
+    <key>NSBluetoothAlwaysUsageDescription</key>
+    <string>هذا التطبيق يحتاج البلوتوث للاتصال بالأجهزة القريبة.</string>
+
+    <key>NSContactsUsageDescription</key>
+    <string>هذا التطبيق يحتاج الوصول إلى جهات الاتصال لتسهيل التواصل.</string>
+
+    <key>NSCalendarsUsageDescription</key>
+    <string>هذا التطبيق يحتاج الوصول إلى التقويم لإضافة أو عرض الأحداث.</string>
+
+    <key>NSRemindersUsageDescription</key>
+    <string>هذا التطبيق يحتاج الوصول إلى التذكيرات لتنظيم مهامك.</string>
+
+    <key>NSSiriUsageDescription</key>
+    <string>هذا التطبيق يحتاج الوصول إلى Siri لتشغيل الأوامر الصوتية.</string>
+
+
+
+
+    <key>NSDocumentsFolderUsageDescription</key>
+    <string>هذا التطبيق يحتاج الوصول إلى ملفاتك لتخزين وفتح المستندات.</string>
+
+    <key>ITSAppUsesNonExemptEncryption</key>
+<false/>
+
 </dict>
 </plist>
+
