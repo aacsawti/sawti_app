@@ -1,0 +1,66 @@
+# workflows:
+#   ios-workflow:
+#     name: Build iOS app
+#     max_build_duration: 60
+#     environment:
+#       flutter: stable
+#       xcode: latest
+#     scripts:
+#       - name: Clean and get packages
+#         script: |
+#           flutter clean
+#           flutter pub get
+#       - name: Build iOS
+#         script: |
+#           flutter build ipa --release \
+#             --export-options-plist=/Users/builder/export_options.plist
+#     artifacts:
+#       - build/ios/ipa/*.ipa
+#     publishing:
+#       app_store_connect:
+#         apple_id: YOUR_APPLE_ID
+#         api_key: YOUR_API_KEY
+#         api_issuer: YOUR_API_ISSUER_ID
+
+
+workflows:
+  ios-workflow:
+    name: iOS Build Workflow
+    environment:
+      groups:
+        - app_store_credentials  # تأكد من أن هذه المجموعة تحتوي على شهادات التوقيع الصحيحة
+      vars:
+        BUNDLE_ID: "com.tawasultechnologies.sawti"  # تأكد من مطابقة Bundle Identifier
+        XCODE_WORKSPACE: "Runner.xcworkspace"
+        XCODE_SCHEME: "Runner"
+      xcode: 16.4  # استخدام نفس إصدار Xcode المذكور في الخطأ
+      cocoapods: default
+    scripts:
+      - name: Set up Flutter
+        script: |
+          flutter config --no-analytics
+          flutter doctor -v
+      - name: Clean project
+        script: |
+          flutter clean
+          rm -rf ios/Podfile.lock
+          rm -rf ios/Pods
+          rm -rf ~/Library/Developer/Xcode/DerivedData  # تنظيف مجلدات Xcode المشتقة
+      - name: Install dependencies
+        script: |
+          flutter pub get
+      - name: Install iOS pods
+        script: |
+          cd ios
+          pod install --repo-update --verbose  # استخدام --verbose للحصول على تفاصيل أكثر
+          cd ..
+      - name: Build iOS
+        script: |
+          flutter build ipa --release --export-options-plist=export_options.plist  # استخدام ملف export_options.plist
+    artifacts:
+      - build/ios/ipa/*.ipa
+    publishing:
+      app_store_connect:
+        auth: integration
+        credentials: integration
+        submit_to_app_store: true

@@ -1,0 +1,50 @@
+name: aac_app
+description: "A new Flutter project."
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+42
+
+environment:
+  sdk: ^3.7.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  shared_preferences: ^2.2.2
+  cupertino_icons: ^1.0.8
+  sqflite: ^2.3.0
+  path: ^1.8.0
+  path_provider: ^2.1.1
+  reorderable_grid_view: ^2.2.4
+  provider: ^6.0.5
+  just_audio: ^0.9.34
+  audio_session: ^0.1.18
+  intl: ^0.20.2
+  flutter_localizations:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/db/aac_app.db 
+    # # - assets/icons
+    # # - assets/images
+    # - assets\images
+   
+    - assets/images/
+    - assets/images/conjugations/
+    - assets/voices/Seif/
+    - assets/voices/Latifa/
+    - assets/voices/Majed/
+    - assets/voices/Shamma/
+    - assets/voices/Noor/
+    - assets/voices/Fares/
+    - assets/speakers/
+  
+
+
